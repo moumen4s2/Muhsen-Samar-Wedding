@@ -1,0 +1,127 @@
+/* Couple photos as a backdrop: one photo behind the countdown,
+   a collage of photos behind the schedule */
+
+.gallery{
+  display:none
+}
+
+.photo-backdrop{
+  position:relative;
+  background:var(--paper);
+  isolation:isolate
+}
+
+.pb-bg{
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  overflow:hidden
+}
+
+.pb-bg img{
+  display:block;
+  width:100%;
+  height:100%;
+  min-height:0;
+  object-fit:cover;
+  object-position:center 28%
+}
+
+.photo-backdrop .section-paper{
+  background:transparent
+}
+
+/* ---------- countdown: a single photo, kept short ---------- */
+
+.pb-count .section-inner{
+  padding:64px 0
+}
+
+.pb-single{
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 40px,#000 calc(100% - 40px),transparent 100%);
+  mask-image:linear-gradient(to bottom,transparent 0,#000 40px,#000 calc(100% - 40px),transparent 100%)
+}
+
+.pb-single img{
+  object-position:center 22%
+}
+
+.pb-single:after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(rgba(44,20,22,.5),rgba(44,20,22,.42))
+}
+
+/* ---------- schedule: collage of photos (2 columns, some wide) ---------- */
+
+.pb-collage{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  grid-auto-rows:1fr;
+  gap:6px;
+  padding:6px 0;
+  background:var(--paper);
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 40px,#000 calc(100% - 40px),transparent 100%);
+  mask-image:linear-gradient(to bottom,transparent 0,#000 40px,#000 calc(100% - 40px),transparent 100%)
+}
+
+.pb-collage img.wide{
+  grid-column:1/-1
+}
+
+/* only a light veil, so the photos stay clearly visible */
+.pb-collage:after{
+  content:'';
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:rgba(44,20,22,.2)
+}
+
+/* lighter type on top of the photos */
+.photo-backdrop .eyebrow{
+  color:#f6ece0;
+  text-shadow:0 1px 8px rgba(0,0,0,.55)
+}
+
+.photo-backdrop .script{
+  color:#fff;
+  text-shadow:0 2px 14px rgba(0,0,0,.5)
+}
+
+.photo-backdrop .timer strong,
+.photo-backdrop .timer small,
+.photo-backdrop .timer>b{
+  color:#fff;
+  text-shadow:0 1px 10px rgba(0,0,0,.45)
+}
+
+/* the centre line stays visible on paper and on photo */
+.photo-backdrop .timeline:before{
+  border-left-color:rgba(201,163,95,.95)
+}
+
+
+/* =========================
+   SCHEDULE — CLEAR GLASS CARDS (the photos show through)
+   ========================= */
+
+.photo-backdrop .timeline article{
+  border:1px solid rgba(255,255,255,.55);
+  border-radius:20px;
+  padding:14px 0;
+  background:linear-gradient(135deg,rgba(255,255,255,.14),rgba(255,255,255,.03));
+  -webkit-backdrop-filter:blur(1.5px) saturate(1.15);
+  backdrop-filter:blur(1.5px) saturate(1.15);
+  box-shadow:0 6px 22px rgba(20,8,10,.22),inset 0 1px 0 rgba(255,255,255,.45);
+  filter:none
+}
+
+.photo-backdrop .timeline time,
+.photo-backdrop .timeline h3,
+.photo-backdrop .timeline h4,
+.photo-backdrop .timeline p{
+  color:#fff;
+  text-shadow:0 1px 3px rgba(0,0,0,.65),0 2px 14px rgba(0,0,0,.55)
+}

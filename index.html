@@ -1,0 +1,625 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#eee6dc" />
+  <title>Muhsen &amp;Samar  — Wedding Invitation</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500&family=Great+Vibes&family=Aref+Ruqaa:wght@400;700&family=Amiri:wght@400;700&family=Cairo:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css?v=16" />
+</head>
+
+<body>
+
+  <div id="loader" class="loader">
+    <span></span>
+  </div>
+
+  <!-- =========================
+       THREE.JS ENVELOPE OPENING
+       ========================= -->
+
+  <section id="envelope" class="envelope-overlay" aria-label="Open invitation">
+    <div class="stage" id="stage" role="button" tabindex="0" aria-label="Tap to open the invitation" data-i18n-aria="env.aria">
+      <div class="hint"><i>&#8963;</i><span data-i18n="env.hint">Tap to open</span></div>
+    </div>
+  </section>
+
+  <div class="top-controls">
+    <button class="lang-toggle" id="langToggle" type="button" aria-label="Switch language"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><ellipse cx="12" cy="12" rx="4" ry="9.5"/><path d="M2.5 12h19M4.5 6.8h15M4.5 17.2h15"/></svg><span id="langLabel">EN</span></button>
+    <button class="music-toggle" id="musicToggle" type="button" aria-label="Music" data-i18n-aria="music.aria" aria-pressed="false">
+    <svg class="ic-pause" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+    <svg class="ic-play" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>
+  </button>
+  </div>
+
+  
+  <div class="yt-holder" aria-hidden="true"><div id="ytPlayer"></div></div>
+  <audio id="bgMusic" src="music.mp3" loop preload="auto"></audio>
+
+  <button class="replay" id="replay" type="button" data-i18n="replay">Replay</button>
+
+  <!-- =========================
+       MAIN WEBSITE
+       ========================= -->
+
+  <main id="site" class="site" aria-hidden="true">
+
+
+    <!-- =========================
+         HERO
+         ========================= -->
+
+    <section class="hero section-paper">
+
+      <div class="hero-image" data-image="hero">
+
+        <img
+          class="hero-video"
+          src="Romantic%20Swan%20Lake%20Archway.png"
+          alt=""
+          aria-hidden="true"
+        >
+
+      </div>
+
+
+      <div class="hero-overlay"></div>
+
+
+      <div class="hero-content">
+
+        <p class="eyebrow" data-i18n="hero.eyebrow">
+          Wedding Day
+        </p>
+
+        <h1>
+          <span data-i18n="hero.muhsen">Muhsen</span>
+          <i>&amp;</i>
+          <span data-i18n="hero.samar">Samar</span>
+        </h1>
+
+        <h2 class="date"><strong>
+          03.12.26
+        </strong>
+        </h2>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         INTRO
+         ========================= -->
+
+    <section class="intro section-paper">
+
+      <!-- Decorative flowers -->
+
+      <img
+        src="rose1.png"
+        class="intro-rose intro-rose-left"
+        alt=""
+        aria-hidden="true"
+      >
+
+      <img
+        src="rose2.png"
+        class="intro-rose intro-rose-right"
+        alt=""
+        aria-hidden="true"
+      >
+
+
+      <div class="botanical botanical-left"></div>
+
+      <div class="botanical botanical-right"></div>
+
+
+      <div class="section-inner narrow paper-note">
+
+        <p class="intro-lead"><strong class="intro-bism" data-i18n="intro.bism">In the Name of the Creator of Love</strong><span data-i18n="intro.lead">, we begin the most beautiful story of our lives, and seal with affection the covenant of the loveliest destinies.</span></p>
+
+        <div class="divider">
+          ✦
+        </div>
+
+        <p class="intro-honor" data-i18n="intro.honor">
+          With great honor,
+        </p>
+
+        <h3 class="intro-families">
+          <span data-i18n="intro.f1">The Saleh Family</span>
+          <i data-i18n="intro.and">and</i>
+          <span data-i18n="intro.f2">The Al-Masri Family</span>
+        </h3>
+
+        <p class="intro-invite" data-i18n="intro.p2">
+          invite you to celebrate the wedding of their children
+        </p>
+
+        <h1 class="intro-names">
+          <span data-i18n="intro.n1">Muhsen</span>
+          <svg class="heart" viewBox="0 0 24 22" aria-hidden="true"><path d="M12 21.2 C4 14.6 1 11 1 7 C1 3.7 3.5 1.4 6.6 1.4 C8.9 1.4 11 2.7 12 4.8 C13 2.7 15.1 1.4 17.4 1.4 C20.5 1.4 23 3.7 23 7 C23 11 20 14.6 12 21.2 Z"/></svg>
+          <span data-i18n="intro.n2">Samar</span>
+        </h1>
+
+        <p class="intro-closing" data-i18n="intro.p3">
+          and to share in the joy of a lifetime, where destinies meet, the story is crowned with union, and a new journey begins &mdash; one whose title is love, and whose foundation is affection and mercy.
+        </p>
+
+      </div>
+
+      <div class="scroll-cue scroll-cue-below">
+        <span data-i18n="scroll">Scroll down</span>
+        <span>↓</span>
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         COUNTDOWN
+         ========================= -->
+
+    <section class="countdown section-paper">
+
+      <div class="section-inner">
+
+        <p class="eyebrow" data-i18n="cd.eyebrow">
+          The Celebration Begins In
+        </p>
+
+        <h2 class="script big" data-i18n="cd.title">
+          Countdown Timer
+        </h2>
+
+
+        <div class="timer" id="timer">
+
+          <div>
+            <strong id="days">168</strong>
+            <small data-i18n="cd.days">Days</small>
+          </div>
+
+          <b>:</b>
+
+          <div>
+            <strong id="hours">00</strong>
+            <small data-i18n="cd.hours">Hours</small>
+          </div>
+
+          <b>:</b>
+
+          <div>
+            <strong id="minutes">00</strong>
+            <small data-i18n="cd.minutes">Minutes</small>
+          </div>
+
+          <b>:</b>
+
+          <div>
+            <strong id="seconds">00</strong>
+            <small data-i18n="cd.seconds">Seconds</small>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         SCHEDULE
+         ========================= -->
+
+    <section class="schedule section-paper">
+
+      <div class="section-inner">
+
+        <p class="eyebrow" data-i18n="sch.eyebrow">
+          Join us as the evening unfolds
+        </p>
+
+        <h2 class="script big" data-i18n="sch.title">
+          Schedule of Events
+        </h2>
+
+
+        <div class="timeline">
+
+          <img class="timeline-flower" src="peony.webp" alt="" aria-hidden="true">
+
+
+          <article>
+            <time data-i18n="t.730">7:30 PM</time>
+            <div>
+              <h3 data-i18n="ev.guest">Guest Arrival</h3>
+              <h3 data-i18n="ev.arrival">&amp; Welcome</h3>
+            </div>
+          </article>
+
+
+          <article>
+            <time data-i18n="t.815">8:15 PM</time>
+            <div>
+              <h3 data-i18n="ev.entrance1">Grand Entrance of</h3>
+              <h3 data-i18n="ev.entrance2">the Bride &amp; Groom</h3>
+            </div>
+          </article>
+
+
+          <article>
+            <time data-i18n="t.830">8:30 PM</time>
+            <div>
+              <h3 data-i18n="ev.dance1">The Couple&#39;s</h3>
+              <h3 data-i18n="ev.dance2">First Dance</h3>
+            </div>
+          </article>
+
+
+          <article>
+            <time data-i18n="t.900">9:00 PM</time>
+            <div>
+              <h3 data-i18n="ev.dinner">Wedding Dinner</h3>
+            </div>
+          </article>
+
+
+          <article>
+            <time data-i18n="t.1000">10:00 PM</time>
+            <div>
+              <h3 data-i18n="ev.party1">Dancing &amp;</h3>
+              <h3 data-i18n="ev.party2">Celebration</h3>
+            </div>
+          </article>
+
+
+          <article>
+            <time data-i18n="t.1100">11:00 PM</time>
+            <div>
+              <h3 data-i18n="ev.photo1">Photography &amp;</h3>
+              <h3 data-i18n="ev.photo2">Congratulations</h3>
+            </div>
+          </article>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         GALLERY (couple photos)
+         ========================= -->
+
+    <section class="gallery section-paper">
+
+      <img class="g wide g-couple" src="photo-01.jpg" alt="Samar &amp; Muhsen" loading="lazy">
+      <img class="g g-half" src="photo-02.jpg" alt="Samar &amp; Muhsen" loading="lazy">
+      <img class="g g-half" src="photo-03.jpg" alt="Samar &amp; Muhsen" loading="lazy">
+      <img class="g wide g-land" src="photo-04.jpg" alt="Samar &amp; Muhsen" loading="lazy">
+      <img class="g g-half" src="photo-05.jpg" alt="Samar &amp; Muhsen" loading="lazy">
+      <img class="g g-half" src="photo-06.jpg" alt="Samar &amp; Muhsen" loading="lazy">
+      <img class="g wide g-pano" src="photo-07.jpg" alt="Samar &amp; Muhsen" loading="lazy">
+      <img class="g g-half" src="photo-08.jpg" alt="Samar &amp; Muhsen" loading="lazy">
+      <img class="g g-half" src="photo-09.jpg" alt="Samar &amp; Muhsen" loading="lazy">
+
+    </section>
+
+
+
+    <!-- =========================
+         LOCATION
+         ========================= -->
+
+    <section class="location section-paper">
+
+      <div class="section-inner narrow">
+
+        <p class="eyebrow" data-i18n="loc.eyebrow">
+          Location
+        </p>
+
+        <h2 class="script big" data-i18n="loc.title">
+          Your Venue
+        </h2>
+
+
+        <div class="venue-photo">
+          <img
+            src="taj-exotica.jpg"
+            alt="Taj Exotica Resort &amp; Spa, The Palm, Dubai"
+            loading="lazy"
+          >
+        </div>
+
+
+        <h3 data-i18n="loc.name">
+          Taj Exotica Resort &amp; The Palm
+        </h3>
+
+        <p data-i18n="loc.addr">
+          Palm Jumeirah &ndash; East Crescent<br>
+          Nakhlat Jumeira, Dubai
+        </p>
+
+
+        <!-- Map picture: tapping it opens the place in Google Maps -->
+        <div class="map-frame">
+
+          <img class="map-orn map-orn-top" src="data:image/webp;base64,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" alt="" aria-hidden="true">
+
+          <a
+            class="map-card"
+            href="https://maps.app.goo.gl/SeYLyak5ggozSaqSA"
+            target="_blank"
+            rel="noopener"
+            aria-label="Open Taj Exotica Resort &amp; Spa in Google Maps"
+          >
+            <iframe
+              title="Map of Taj Exotica Resort &amp; Spa, The Palm, Dubai"
+              src="https://maps.google.com/maps?q=Taj+Exotica+Resort+%26+Spa,+The+Palm,+Dubai&amp;z=15&amp;output=embed"
+              loading="lazy"
+              tabindex="-1"
+              aria-hidden="true"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </a>
+
+          <img class="map-orn map-orn-bottom" src="data:image/webp;base64,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" alt="" aria-hidden="true">
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         DETAILS
+         ========================= -->
+
+    <section class="details section-paper">
+
+      <div class="detail-card">
+
+
+<h2 class="script" data-i18n="dress.text">Kindly dress in one of these colors</h2>
+
+        <ul class="palette">
+          <li style="--c:#17b3ad">
+            <img class="dress" src="dress_teal.png" alt="Turquoise dress" loading="lazy">
+            <small><i style="--c:#17b3ad"></i><span data-i18n="col.turq">Turquoise</span></small>
+          </li>
+          <li style="--c:#7d1426">
+            <img class="dress" src="dress_burgundy.png" alt="Burgundy dress" loading="lazy">
+            <small><i style="--c:#7d1426"></i><span data-i18n="col.burg">Burgundy</span></small>
+          </li>
+          <li style="--c:#f6c3cd">
+            <img class="dress" src="dress_pink.png" alt="Light pink dress" loading="lazy">
+            <small><i style="--c:#f6c3cd"></i><span data-i18n="col.pink">Light Pink</span></small>
+          </li>
+          <li style="--c:#fbeaa4">
+            <img class="dress" src="dress_yellow.png" alt="Light yellow dress" loading="lazy">
+            <small><i style="--c:#fbeaa4"></i><span data-i18n="col.yellow">Light Yellow</span></small>
+          </li>
+          <li style="--c:#1a1a1c">
+            <img class="dress" src="suit_black.png" alt="Black suit" loading="lazy">
+            <small><i style="--c:#1a1a1c"></i><span data-i18n="col.black">Black</span></small>
+          </li>
+          <li style="--c:#1b2a55">
+            <img class="dress" src="suit_navy.png" alt="Navy suit" loading="lazy">
+            <small><i style="--c:#1b2a55"></i><span data-i18n="col.navy">Navy</span></small>
+          </li>
+        </ul>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         RSVP
+         ========================= -->
+
+    <section class="rsvp section-paper">
+
+      <div class="section-inner narrow">
+
+        <p class="eyebrow" data-i18n="rsvp.eyebrow">
+          To help us prepare for a joyful celebration
+        </p>
+
+
+        <h2 class="script huge" data-i18n="rsvp.title">
+          Confirm Your Attendance
+        </h2>
+
+
+        <p data-i18n="rsvp.text">
+          Kindly confirm your attendance and help us make
+          the evening unforgettable.
+        </p>
+
+
+        <button class="rsvp-open" id="rsvpButton" type="button" aria-haspopup="dialog">
+          <img src="seal-MS.png" width="192" height="215" alt="">
+          <span class="chev" aria-hidden="true"></span>
+          <span class="open-text" data-i18n="rsvp.open">Click to open</span>
+        </button>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         CLOSING
+         ========================= -->
+
+    <section class="closing section-paper">
+
+      <img class="closing-photo" src="photo-closing.jpg" alt="Samar &amp; Muhsen" loading="lazy">
+
+
+      <div class="closing-copy">
+
+        <p class="closing-line" data-i18n="closing.title">
+          Because joy is made complete by the faces that share it, we would be delighted to have you be part of our most beautiful days.
+        </p>
+
+        <p class="closing-names">
+          <span data-i18n="closing.n1">Muhsen</span>
+          <svg class="heart" viewBox="0 0 24 22" aria-hidden="true"><path d="M12 21.2 C4 14.6 1 11 1 7 C1 3.7 3.5 1.4 6.6 1.4 C8.9 1.4 11 2.7 12 4.8 C13 2.7 15.1 1.4 17.4 1.4 C20.5 1.4 23 3.7 23 7 C23 11 20 14.6 12 21.2 Z"/></svg>
+          <span data-i18n="closing.n2">Samar</span>
+        </p>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+
+  <!-- =========================
+       RSVP MODAL
+       ========================= -->
+
+  <dialog id="rsvpDialog" class="rsvp-dialog">
+
+    <button
+      class="dialog-close"
+      type="button"
+      onclick="document.getElementById('rsvpDialog').close()"
+      aria-label="Close RSVP" data-i18n-aria="dlg.close"
+    >
+      ×
+    </button>
+
+
+    <div class="rsvp-modal-inner">
+
+      <h2 data-i18n="rsvp.title">
+        Confirm Your Attendance
+      </h2>
+
+      <form
+        method="dialog"
+        class="rsvp-form"
+        id="rsvpForm"
+      >
+
+        <label data-i18n="dlg.name">
+          Your name
+        </label>
+
+        <input
+          aria-label="Your name" data-i18n-aria="dlg.name"
+          required
+        >
+
+
+        <fieldset>
+
+          <legend data-i18n="dlg.attend">
+            Will you be attending?
+          </legend>
+
+
+          <label class="radio-row">
+
+            <input
+              type="radio"
+              name="attendance"
+              value="accepts"
+              required
+            >
+
+            <span data-i18n="dlg.accept">
+              Accepts with pleasure
+            </span>
+
+          </label>
+
+
+          <label class="radio-row">
+
+            <input
+              type="radio"
+              name="attendance"
+              value="declines"
+            >
+
+            <span data-i18n="dlg.decline">
+              Declines with regret
+            </span>
+
+          </label>
+
+        </fieldset>
+
+
+
+        <label data-i18n="dlg.guests">
+          Number of Guests Attending
+        </label>
+
+        <div class="guest-picker" role="radiogroup" aria-label="Number of Guests Attending" data-i18n-aria="dlg.guests">
+          <label class="guest-opt"><input type="radio" name="guests" value="0"><span>0</span></label>
+          <label class="guest-opt"><input type="radio" name="guests" value="1" checked><span>1</span></label>
+          <label class="guest-opt"><input type="radio" name="guests" value="2"><span>2</span></label>
+          <label class="guest-opt"><input type="radio" name="guests" value="3"><span>3</span></label>
+        </div>
+
+
+
+        <label data-i18n="dlg.song">
+          A Song That Gets You Dancing
+        </label>
+
+        <input
+          aria-label="A Song That Gets You Dancing" data-i18n-aria="dlg.song"
+        >
+
+        <p class="no-children-notice" data-i18n="dlg.children">A child&#39;s paradise is at home.</p>
+
+<button
+          class="rsvp-submit"
+          type="submit"
+         data-i18n="dlg.submit">
+          Submit
+        </button>
+
+      </form>
+
+    </div>
+
+  </dialog>
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="script.js?v=3"></script>
+  <script src="i18n.js?v=13"></script>
+  <script src="music.js?v=9"></script>
+
+</body>
+</html>
