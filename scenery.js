@@ -53,7 +53,7 @@
 
   /* ---------- automatic scroll ---------- */
   var SPEED = 55;            // pixels per second
-  var DELAY = 1800;          // ms to wait on the first screen
+  var DELAY = 9500;          // ms to wait on the first screen (sunrise + names are written first)
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   var started = false, stopped = false, pos = 0, last = 0;
   var dlg = document.getElementById('rsvpDialog');

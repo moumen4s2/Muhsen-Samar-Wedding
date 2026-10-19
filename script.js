@@ -199,6 +199,23 @@ document.body.style.overflow = 'hidden';
     overlay.classList.add('is-hidden');
     replay.classList.add('visible');
     window.scrollTo({ top: 0, behavior: 'instant' });
+    sunrise();
+  }
+
+  /* the sun rises over the lake, then the names are written one after the other */
+  function sunrise() {
+    const hero = document.querySelector('.hero');
+    if (!hero) return;
+    const img = hero.querySelector('.hero-video');
+    const W = hero.clientWidth, H = hero.clientHeight;
+    const iw = (img && img.naturalWidth) || 941, ih = (img && img.naturalHeight) || 1672;
+    const sc = Math.max(W / iw, H / ih), rw = iw * sc, rh = ih * sc;
+    const oy = (H - rh) * 0.70, ox = (W - rw) / 2;
+    hero.style.setProperty('--hy', (oy + rh * 0.655) + 'px');
+    hero.style.setProperty('--hx', (ox + rw * 0.565) + 'px');
+    hero.classList.remove('sunrise');
+    void hero.offsetWidth;
+    hero.classList.add('sunrise');
   }
 
   function open() {
@@ -217,6 +234,8 @@ document.body.style.overflow = 'hidden';
     stage.classList.remove('open');
     overlay.classList.remove('is-hidden');
     site.setAttribute('aria-hidden', 'true');
+    const heroEl = document.querySelector('.hero');
+    if (heroEl) heroEl.classList.remove('sunrise');
     document.body.style.overflow = 'hidden';
     window.scrollTo({ top: 0, behavior: 'instant' });
   });
@@ -236,7 +255,6 @@ function tick(){
 }
 tick();setInterval(tick,1000);
 
-document.getElementById('rsvpButton').addEventListener('click',()=>document.getElementById('rsvpDialog').showModal());
 
 // The flower rides the centre line of the schedule while the page is scrolled.
 (function(){

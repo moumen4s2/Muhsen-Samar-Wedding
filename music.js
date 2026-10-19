@@ -104,6 +104,6 @@
 
 /* page decoration + automatic scroll (kept in their own files) */
 (function () {
-  var l = document.createElement('link'); l.rel = 'stylesheet'; l.href = 'scenery.css?v=3'; document.head.appendChild(l);
-  var s = document.createElement('script'); s.src = 'scenery.js?v=2'; document.body.appendChild(s);
+  var l = document.createElement('link'); l.rel = 'stylesheet'; l.href = 'scenery.css?v=4'; document.head.appendChild(l);
+  var s = document.createElement('script'); s.src = 'scenery.js?v=3'; document.body.appendChild(s);
 })();

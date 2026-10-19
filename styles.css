@@ -1927,3 +1927,430 @@ html[lang="ar"] .photo-backdrop .timeline h3{
   font-weight:700;
   line-height:1.45
 }
+
+
+/* =========================================================
+   ROUND 3
+   ========================================================= */
+
+/* ---------- hero: sunrise, then the names are written ---------- */
+
+.hero-sun{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  overflow:hidden;
+  mix-blend-mode:screen;
+  clip-path:inset(0 0 calc(100% - var(--hy,62%)) 0)
+}
+
+.sun-glow{
+  position:absolute;
+  left:var(--hx,56%);
+  top:var(--hy,62%);
+  width:620px;
+  height:620px;
+  margin:-310px 0 0 -310px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(255,228,176,.95) 0%,rgba(255,198,122,.5) 26%,rgba(255,170,110,0) 66%);
+  opacity:0;
+  transform:translateY(130px) scale(.5)
+}
+
+.sun-disc{
+  position:absolute;
+  left:var(--hx,56%);
+  top:var(--hy,62%);
+  width:92px;
+  height:92px;
+  margin:-46px 0 0 -46px;
+  border-radius:50%;
+  background:radial-gradient(circle at 50% 45%,#fffbe8 0,#fffbe8 36%,#ffe3a2 62%,#ffbe6a 100%);
+  box-shadow:0 0 54px 22px rgba(255,214,140,.8);
+  opacity:0;
+  transform:translateY(100px)
+}
+
+.hero:not(.sunrise) .hero-video{
+  filter:brightness(.16) saturate(.5)
+}
+
+.hero.sunrise .hero-video{
+  animation:heroDawn 4.2s ease-out forwards
+}
+
+.hero.sunrise .sun-disc{
+  animation:sunRise 4s cubic-bezier(.2,.7,.25,1) forwards
+}
+
+.hero.sunrise .sun-glow{
+  animation:sunGlow 4.8s ease-out forwards
+}
+
+@keyframes heroDawn{
+  from{filter:brightness(.16) saturate(.5)}
+  to{filter:brightness(1) saturate(1)}
+}
+
+@keyframes sunRise{
+  0%{opacity:1;transform:translateY(100px)}
+  70%{opacity:1}
+  100%{opacity:0;transform:translateY(-170px)}
+}
+
+@keyframes sunGlow{
+  0%{opacity:0;transform:translateY(130px) scale(.5)}
+  55%{opacity:1}
+  100%{opacity:0;transform:translateY(-120px) scale(1.2)}
+}
+
+/* names: written slowly, one after the other, then the date */
+.hero h1 span,
+.hero h1 i,
+.hero .date{
+  opacity:0
+}
+
+.hero h1 span{
+  justify-self:center
+}
+
+.hero.sunrise h1 span:first-child{
+  animation:writeL 1.9s cubic-bezier(.45,0,.25,1) 3.1s forwards
+}
+
+.hero.sunrise h1 i{
+  animation:fadeIn .8s ease 4.9s forwards
+}
+
+.hero.sunrise h1 span:last-child{
+  animation:writeL 1.9s cubic-bezier(.45,0,.25,1) 5.3s forwards
+}
+
+.hero.sunrise .date{
+  animation:fadeIn 1.2s ease 7.4s forwards
+}
+
+html[lang="ar"] .hero.sunrise h1 span:first-child,
+html[lang="ar"] .hero.sunrise h1 span:last-child{
+  animation-name:writeR
+}
+
+@keyframes writeL{
+  from{opacity:1;clip-path:inset(-30% 102% -30% -10%)}
+  to{opacity:1;clip-path:inset(-30% -10% -30% -10%)}
+}
+
+@keyframes writeR{
+  from{opacity:1;clip-path:inset(-30% -10% -30% 102%)}
+  to{opacity:1;clip-path:inset(-30% -10% -30% -10%)}
+}
+
+@keyframes fadeIn{
+  from{opacity:0}
+  to{opacity:1}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .hero.sunrise *{
+    animation-duration:.01s!important;
+    animation-delay:0s!important
+  }
+}
+
+
+/* ---------- intro: whole first sentence in red, same font ---------- */
+
+html .intro-lead,
+html .intro-lead span{
+  color:var(--wine);
+  font-weight:inherit;
+  font-family:inherit
+}
+
+html .intro-honor{
+  margin:0 auto 60px!important
+}
+
+/* each family sits above the name of its child */
+html .intro .couple-grid{
+  display:grid;
+  grid-template-columns:1fr 34px 1fr;
+  align-items:center;
+  justify-items:center;
+  width:100%;
+  max-width:340px;
+  margin-left:auto;
+  margin-right:auto;
+  text-align:center
+}
+
+html .intro .intro-families{
+  margin-top:0;
+  margin-bottom:0;
+  font-weight:400
+}
+
+html .intro .intro-families h3{
+  margin:0;
+  font-family:'Cormorant Garamond',serif;
+  font-weight:600;
+  font-size:25px;
+  line-height:1.2;
+  color:var(--ink)
+}
+
+html .intro .intro-families i{
+  font-style:italic;
+  color:var(--wine);
+  font-size:22px
+}
+
+html[lang="ar"] .intro .intro-families h3{
+  font-family:'Amiri',serif;
+  font-weight:700;
+  font-size:31px
+}
+
+html .intro-invite{
+  margin:36px auto 34px!important
+}
+
+html .intro .intro-names{
+  margin:0 auto 38px;
+  font-size:42px;
+  line-height:1.15;
+  white-space:normal;
+  gap:0;
+  flex-direction:unset
+}
+
+html[lang="ar"] .intro .intro-names{
+  font-size:44px;
+  line-height:1.4;
+  flex-direction:unset
+}
+
+html .intro .intro-names .heart,
+html[lang="ar"] .intro .intro-names .heart{
+  width:28px;
+  height:26px;
+  margin:0
+}
+
+
+/* ---------- countdown ---------- */
+
+.forever{
+  margin:0 0 26px;
+  font-family:'Cormorant Garamond',serif!important;
+  font-style:italic;
+  font-weight:600;
+  font-size:30px;
+  letter-spacing:.03em;
+  line-height:1.2;
+  color:#fff;
+  direction:ltr;
+  text-shadow:0 1px 3px rgba(0,0,0,.7),0 2px 14px rgba(0,0,0,.55)
+}
+
+
+/* ---------- schedule: clearer background, no heading ---------- */
+
+.pb-schedule .section-inner{
+  padding-top:60px;
+  padding-bottom:80px
+}
+
+.pb-collage img{
+  filter:brightness(.6) saturate(.9) blur(3px);
+  transform:scale(1.05)
+}
+
+.pb-collage{
+  overflow:hidden
+}
+
+.pb-collage:after{
+  background:rgba(34,14,16,.32)
+}
+
+html .photo-backdrop .timeline article{
+  background:linear-gradient(135deg,rgba(30,12,14,.34),rgba(30,12,14,.18));
+  -webkit-backdrop-filter:blur(4px) saturate(1.1);
+  backdrop-filter:blur(4px) saturate(1.1);
+  border-color:rgba(255,255,255,.6)
+}
+
+html .photo-backdrop .timeline h3{
+  font-size:25px
+}
+
+
+/* ---------- dress code: two groups of colour circles ---------- */
+
+.mates{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  direction:ltr;
+  gap:22px;
+  max-width:340px;
+  margin:30px auto 0
+}
+
+.mate{
+  flex:1;
+  text-align:center
+}
+
+.mate h3{
+  margin:0 0 16px;
+  font-family:'Cormorant Garamond',serif;
+  font-weight:600;
+  font-size:23px;
+  line-height:1.2;
+  color:var(--wine)
+}
+
+html[lang="ar"] .mate h3{
+  font-family:'Amiri',serif;
+  font-weight:700;
+  font-size:25px
+}
+
+.dots{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:12px;
+  margin:0 auto
+}
+
+.mate-bride .dots{
+  max-width:100px
+}
+
+.mate-groom .dots{
+  max-width:160px
+}
+
+.dots i{
+  display:block;
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  background:var(--c);
+  border:2px solid rgba(255,255,255,.95);
+  box-shadow:0 0 0 1px rgba(103,27,37,.2),0 4px 10px rgba(70,45,35,.28)
+}
+
+
+/* ---------- RSVP: the form sits right in the page ---------- */
+
+.rsvp .section-inner{
+  padding-top:70px;
+  padding-bottom:70px
+}
+
+.rsvp-inline{
+  margin-top:26px;
+  padding:24px 18px 22px;
+  border-radius:24px;
+  background:rgba(255,255,255,.55);
+  border:1px solid rgba(103,27,37,.12);
+  box-shadow:0 10px 28px rgba(70,45,35,.1);
+  text-align:start
+}
+
+.rsvp-inline .rsvp-form{
+  display:grid;
+  gap:12px;
+  margin:0;
+  padding:0
+}
+
+.rsvp-inline fieldset{
+  margin:0;
+  padding:0;
+  border:0
+}
+
+.no-children{
+  display:grid;
+  justify-items:center;
+  gap:10px;
+  margin:16px 0 4px;
+  text-align:center
+}
+
+.age-badge{
+  display:inline-grid;
+  place-items:center;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  border:2px solid var(--wine);
+  color:var(--wine);
+  font:700 19px 'DM Sans',sans-serif;
+  letter-spacing:0;
+  direction:ltr
+}
+
+.no-children .no-children-notice{
+  margin:0;
+  font-size:20px;
+  color:var(--wine)
+}
+
+html[lang="ar"] .no-children .no-children-notice{
+  font-size:22px
+}
+
+.sleeping-child{
+  display:block;
+  width:150px;
+  height:auto;
+  margin:4px auto 0
+}
+
+/* round 3 fixes */
+.age-badge{
+  unicode-bidi:isolate;
+  direction:ltr
+}
+
+html .intro .intro-families h3{
+  font-size:22px
+}
+
+html[lang="ar"] .intro .intro-families h3{
+  font-size:27px
+}
+
+.rsvp .script.big{
+  font-size:40px;
+  line-height:1.2
+}
+
+html[lang="ar"] .rsvp .script.big{
+  font-size:38px
+}
+
+.sleeping-child{
+  overflow:visible
+}
+
+/* schedule backdrop: photos visible again, still soft enough for the text */
+.pb-collage img{
+  filter:brightness(.8) saturate(.95) blur(2px)
+}
+
+.pb-collage:after{
+  background:rgba(34,14,16,.2)
+}
+
+html .photo-backdrop .timeline article{
+  background:linear-gradient(135deg,rgba(30,12,14,.4),rgba(30,12,14,.26))
+}
