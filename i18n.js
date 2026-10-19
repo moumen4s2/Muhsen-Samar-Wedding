@@ -3,7 +3,7 @@
    To change an Arabic sentence, edit it here. */
 (function () {
   var AR = {
-    'title': 'حفل زفاف سمر ومحسن',
+    'title': 'حفل زفاف محسن وسمر',
     'env.hint': 'المس للفتح',
     'env.aria': 'المس لفتح الدعوة',
     'replay': 'إعادة',
@@ -57,8 +57,8 @@
     'rsvp.text': 'نرجو تأكيد حضوركم لتساعدونا في جعل الأمسية لا تُنسى.',
     'rsvp.open': 'اضغط للفتح',
     'closing.title': 'ولأنّ للفرح وجوهًا تُكمِلُ بهجتَه، يسعدنا أن تكونوا جزءًا من أجمل أيامنا',
-    'closing.n1': 'سَمَر',
-    'closing.n2': 'مُحْسِن',
+    'closing.n1': 'مُحْسِن',
+    'closing.n2': 'سَمَر',
     'dlg.close': 'إغلاق',
     'dlg.name': 'الاسم',
     'dlg.attend': 'هل ستحضرون؟',
@@ -139,14 +139,9 @@
     var sync = function () {
       var att = form.querySelector('input[name="attendance"]:checked');
       var declines = att && att.value === 'declines';
-      picks.forEach(function (p) {
-        p.disabled = declines ? p.value !== '0' : false;
-        if (declines && p.value === '0') p.checked = true;
-      });
-      if (att && !declines) {
-        var c = picks.filter(function (p) { return p.checked; })[0];
-        if (!c || c.value === '0') picks[1].checked = true;
-      }
+      /* declining: the guest count is locked on a faded "1"; accepting: all numbers are available again */
+      picks.forEach(function (p) { p.disabled = !!declines; });
+      if (declines) picks[0].checked = true;
     };
     [].slice.call(form.querySelectorAll('input[name="attendance"]')).forEach(function (r) {
       r.addEventListener('change', sync);
@@ -169,15 +164,15 @@
     var song = form.querySelector('input[data-i18n-aria="dlg.song"]').value.trim();
     var yes = att && att.value === 'accepts';
     var lines = ar ? [
-      'تأكيد حضور حفل زفاف سمر ومحسن',
+      'تأكيد حضور حفل زفاف محسن وسمر',
       'الاسم: ' + name,
       'الحضور: ' + (yes ? 'أقبل بكل سرور' : 'أعتذر مع الأسف'),
-      'عدد الضيوف: ' + (guests ? guests.value : (yes ? 1 : 0))
+      'عدد الضيوف: ' + (yes ? (guests ? guests.value : 1) : 0)
     ] : [
-      'RSVP - Samar & Muhsen wedding',
+      'RSVP - Muhsen & Samar wedding',
       'Name: ' + name,
       'Attendance: ' + (yes ? 'Accepts with pleasure' : 'Declines with regret'),
-      'Guests: ' + (guests ? guests.value : (yes ? 1 : 0))
+      'Guests: ' + (yes ? (guests ? guests.value : 1) : 0)
     ];
     if (song) lines.push((ar ? 'أغنية للرقص: ' : 'Song: ') + song);
     var url = 'https://wa.me/' + NUMBER + '?text=' + encodeURIComponent(lines.join('\n'));

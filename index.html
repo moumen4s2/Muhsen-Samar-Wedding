@@ -11,7 +11,7 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500&family=Great+Vibes&family=Aref+Ruqaa:wght@400;700&family=Amiri:wght@400;700&family=Cairo:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css?v=17" />
+  <link rel="stylesheet" href="styles.css?v=18" />
 </head>
 
 <body>
@@ -27,6 +27,14 @@
   <section id="envelope" class="envelope-overlay" aria-label="Open invitation">
     <div class="stage" id="stage" role="button" tabindex="0" aria-label="Tap to open the invitation" data-i18n-aria="env.aria">
       <div class="hint"><i>&#8963;</i><span data-i18n="env.hint">Tap to open</span></div>
+
+      <!-- sunrise that plays on the empty page right after the envelope disappears -->
+      <div class="dawn" aria-hidden="true">
+        <span class="dawn-sky"></span>
+        <span class="dawn-glow"></span>
+        <span class="dawn-sun"></span>
+        <span class="dawn-lake"></span>
+      </div>
     </div>
   </section>
 
@@ -68,11 +76,6 @@
 
       </div>
 
-
-      <div class="hero-sun" aria-hidden="true">
-        <span class="sun-glow"></span>
-        <span class="sun-disc"></span>
-      </div>
 
       <div class="hero-overlay"></div>
 
@@ -290,15 +293,15 @@
 
     <section class="gallery section-paper">
 
-      <img class="g wide g-couple" src="photo-01.jpg" alt="Samar &amp; Muhsen" loading="lazy">
-      <img class="g g-half" src="photo-02.jpg" alt="Samar &amp; Muhsen" loading="lazy">
-      <img class="g g-half" src="photo-03.jpg" alt="Samar &amp; Muhsen" loading="lazy">
-      <img class="g wide g-land" src="photo-04.jpg" alt="Samar &amp; Muhsen" loading="lazy">
-      <img class="g g-half" src="photo-05.jpg" alt="Samar &amp; Muhsen" loading="lazy">
-      <img class="g g-half" src="photo-06.jpg" alt="Samar &amp; Muhsen" loading="lazy">
-      <img class="g wide g-pano" src="photo-07.jpg" alt="Samar &amp; Muhsen" loading="lazy">
-      <img class="g g-half" src="photo-08.jpg" alt="Samar &amp; Muhsen" loading="lazy">
-      <img class="g g-half" src="photo-09.jpg" alt="Samar &amp; Muhsen" loading="lazy">
+      <img class="g wide g-couple" src="photo-01.jpg" alt="Muhsen &amp; Samar" loading="lazy">
+      <img class="g g-half" src="photo-02.jpg" alt="Muhsen &amp; Samar" loading="lazy">
+      <img class="g g-half" src="photo-03.jpg" alt="Muhsen &amp; Samar" loading="lazy">
+      <img class="g wide g-land" src="photo-04.jpg" alt="Muhsen &amp; Samar" loading="lazy">
+      <img class="g g-half" src="photo-05.jpg" alt="Muhsen &amp; Samar" loading="lazy">
+      <img class="g g-half" src="photo-06.jpg" alt="Muhsen &amp; Samar" loading="lazy">
+      <img class="g wide g-pano" src="photo-07.jpg" alt="Muhsen &amp; Samar" loading="lazy">
+      <img class="g g-half" src="photo-08.jpg" alt="Muhsen &amp; Samar" loading="lazy">
+      <img class="g g-half" src="photo-09.jpg" alt="Muhsen &amp; Samar" loading="lazy">
 
     </section>
 
@@ -491,7 +494,6 @@
         </label>
 
         <div class="guest-picker" role="radiogroup" aria-label="Number of Guests Attending" data-i18n-aria="dlg.guests">
-          <label class="guest-opt"><input type="radio" name="guests" value="0"><span>0</span></label>
           <label class="guest-opt"><input type="radio" name="guests" value="1" checked><span>1</span></label>
           <label class="guest-opt"><input type="radio" name="guests" value="2"><span>2</span></label>
           <label class="guest-opt"><input type="radio" name="guests" value="3"><span>3</span></label>
@@ -547,7 +549,7 @@
 
     <section class="closing section-paper">
 
-      <img class="closing-photo" src="photo-closing.jpg" alt="Samar &amp; Muhsen" loading="lazy">
+      <img class="closing-photo" src="photo-closing.jpg" alt="Muhsen &amp; Samar" loading="lazy">
 
 
       <div class="closing-copy">
@@ -557,10 +559,12 @@
         </p>
 
         <p class="closing-names">
-          <span data-i18n="closing.n1">Samar</span>
+          <span data-i18n="closing.n1">Muhsen</span>
           <svg class="heart" viewBox="0 0 24 22" aria-hidden="true"><path d="M12 21.2 C4 14.6 1 11 1 7 C1 3.7 3.5 1.4 6.6 1.4 C8.9 1.4 11 2.7 12 4.8 C13 2.7 15.1 1.4 17.4 1.4 C20.5 1.4 23 3.7 23 7 C23 11 20 14.6 12 21.2 Z"/></svg>
-          <span data-i18n="closing.n2">Muhsen</span>
+          <span data-i18n="closing.n2">Samar</span>
         </p>
+
+        <p class="closing-date">03.12.26</p>
 
       </div>
 
@@ -571,8 +575,8 @@
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="script.js?v=4"></script>
-  <script src="i18n.js?v=14"></script>
+  <script src="script.js?v=5"></script>
+  <script src="i18n.js?v=15"></script>
   <script src="music.js?v=9"></script>
 
 </body>

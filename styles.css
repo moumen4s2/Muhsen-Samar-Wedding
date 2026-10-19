@@ -2354,3 +2354,199 @@ html[lang="ar"] .rsvp .script.big{
 html .photo-backdrop .timeline article{
   background:linear-gradient(135deg,rgba(30,12,14,.4),rgba(30,12,14,.26))
 }
+
+
+/* =========================================================
+   ROUND 4: sunrise on the empty page (after the envelope),
+   hero picture shows normally, names + date written after it
+   ========================================================= */
+
+/* the sun is no longer on the hero picture */
+.hero-sun{
+  display:none!important
+}
+
+.hero:not(.sunrise) .hero-video,
+.hero.sunrise .hero-video{
+  filter:none;
+  animation:none
+}
+
+/* ---------- dawn scene inside the envelope stage ---------- */
+
+.dawn{
+  position:absolute;
+  inset:0;
+  z-index:6;
+  overflow:hidden;
+  pointer-events:none;
+  opacity:0;
+  visibility:hidden
+}
+
+.dawn-sky{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to bottom,#f8efdf 0%,#f7e6cc 42%,#f5d3a6 66%,#f2c58f 100%)
+}
+
+.dawn-glow{
+  position:absolute;
+  left:50%;
+  top:66%;
+  width:760px;
+  height:760px;
+  margin:-380px 0 0 -380px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(255,236,190,.98) 0%,rgba(255,206,130,.55) 24%,rgba(255,180,110,0) 62%);
+  opacity:0;
+  transform:translateY(150px) scale(.55)
+}
+
+.dawn-sun{
+  position:absolute;
+  left:50%;
+  top:66%;
+  width:104px;
+  height:104px;
+  margin:-52px 0 0 -52px;
+  border-radius:50%;
+  background:radial-gradient(circle at 50% 45%,#fffdf0 0,#fffdf0 34%,#ffe7a8 62%,#ffc874 100%);
+  box-shadow:0 0 60px 26px rgba(255,214,140,.85);
+  transform:translateY(120px)
+}
+
+/* the lake hides the lower half of the sun, so it rises out of the horizon */
+.dawn-lake{
+  position:absolute;
+  left:0;
+  right:0;
+  top:66%;
+  bottom:0;
+  background:
+    linear-gradient(to bottom,rgba(255,225,170,.0),rgba(255,225,170,0) 100%),
+    linear-gradient(to bottom,#eed7b7 0%,#e6c9a1 55%,#dfbd92 100%)
+}
+
+.dawn-lake:before{
+  content:'';
+  position:absolute;
+  left:50%;
+  top:0;
+  bottom:0;
+  width:64px;
+  margin-left:-32px;
+  background:linear-gradient(to bottom,rgba(255,236,190,.95),rgba(255,236,190,0));
+  filter:blur(10px);
+  opacity:0
+}
+
+.stage.dawn-on .dawn{
+  visibility:visible;
+  animation:dawnIn .9s ease forwards
+}
+
+.stage.dawn-on .dawn-sun{
+  animation:dawnSun 4.2s cubic-bezier(.2,.7,.25,1) .2s forwards
+}
+
+.stage.dawn-on .dawn-glow{
+  animation:dawnGlow 4.4s ease-out .2s forwards
+}
+
+.stage.dawn-on .dawn-lake:before{
+  animation:dawnReflect 4s ease-out .5s forwards
+}
+
+@keyframes dawnIn{
+  from{opacity:0}
+  to{opacity:1}
+}
+
+@keyframes dawnSun{
+  from{transform:translateY(120px)}
+  to{transform:translateY(-250px)}
+}
+
+@keyframes dawnGlow{
+  0%{opacity:0;transform:translateY(150px) scale(.55)}
+  60%{opacity:1}
+  100%{opacity:1;transform:translateY(-230px) scale(1.15)}
+}
+
+@keyframes dawnReflect{
+  from{opacity:0}
+  to{opacity:1}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .stage.dawn-on .dawn,
+  .stage.dawn-on .dawn-sun,
+  .stage.dawn-on .dawn-glow,
+  .stage.dawn-on .dawn-lake:before{
+    animation-duration:.01s!important;
+    animation-delay:0s!important
+  }
+}
+
+/* ---------- names, then the date, written one after the other ---------- */
+
+.hero.sunrise h1 span:first-child{
+  animation:writeL 1.8s cubic-bezier(.45,0,.25,1) .5s forwards
+}
+
+.hero.sunrise h1 i{
+  animation:fadeIn .6s ease 2.4s forwards
+}
+
+.hero.sunrise h1 span:last-child{
+  animation:writeL 1.8s cubic-bezier(.45,0,.25,1) 2.9s forwards
+}
+
+html[lang="ar"] .hero.sunrise h1 span:first-child,
+html[lang="ar"] .hero.sunrise h1 span:last-child{
+  animation-name:writeR
+}
+
+.hero .date{
+  display:inline-block
+}
+
+.hero.sunrise .date{
+  animation:writeL 1.5s cubic-bezier(.45,0,.25,1) 5.1s forwards
+}
+
+html[lang="ar"] .hero.sunrise .date{
+  animation-name:writeL
+}
+
+/* ---------- dress code: groom circles 2 + 1 centred below ---------- */
+
+.mate-groom .dots{
+  max-width:100px
+}
+
+
+/* ---------- round 4 ---------- */
+
+/* the envelope disappears at once: no cream page fading out before the hero appears */
+.envelope-overlay.is-hidden{
+  transition:none
+}
+
+/* groom mate: two circles, the third one centred underneath */
+.mate-groom .dots{
+  max-width:100px
+}
+
+/* the date closes the page, under the names */
+.closing-date{
+  margin:14px 0 0;
+  font-family:'Cormorant Garamond',serif;
+  font-weight:600;
+  font-size:26px;
+  letter-spacing:.32em;
+  text-indent:.32em;
+  color:var(--wine);
+  direction:ltr
+}
