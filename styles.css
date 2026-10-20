@@ -2550,3 +2550,43 @@ html[lang="ar"] .hero.sunrise .date{
   color:var(--wine);
   direction:ltr
 }
+
+
+/* ---------- hero: the "Save the Date" photo, names written at the bottom ---------- */
+
+.hero{
+  place-items:end center
+}
+
+.hero-video{
+  object-position:50% 40%
+}
+
+.hero-overlay{
+  background:linear-gradient(to bottom,rgba(0,0,0,0) 48%,rgba(34,16,16,.35) 72%,rgba(34,16,16,.72) 100%)
+}
+
+.hero-content{
+  width:100%;
+  padding:0 16px 54px
+}
+
+.hero h1{
+  display:flex;
+  justify-content:center;
+  align-items:baseline;
+  gap:.22em;
+  font-size:clamp(46px,13vw,76px);
+  line-height:1;
+  text-shadow:0 2px 6px rgba(0,0,0,.45),0 4px 22px rgba(0,0,0,.45)
+}
+
+.hero h1 i{
+  font-size:.5em;
+  margin:0
+}
+
+/* the date is already written on the sign in the photo */
+.hero .date{
+  display:none!important
+}
