@@ -53,7 +53,7 @@
 
   /* ---------- automatic scroll ---------- */
   var SPEED = 55;            // pixels per second
-  var DELAY = 9500;          // ms to wait on the first screen (sunrise + names are written first)
+  var DELAY = 12000;         // safety net only: normally the scroll waits for the names to be written
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   var started = false, stopped = false, pos = 0, last = 0;
   var dlg = document.getElementById('rsvpDialog');
@@ -74,15 +74,30 @@
     window.scrollTo({ top: pos, behavior: 'instant' });
     requestAnimationFrame(step);
   }
-  function begin() {
-    if (started || reduce) return;
-    started = true;
+  /* the scroll starts 2 seconds after the names have been written */
+  var AFTER_NAMES = 1000;
+  var go = false;
+  function launch() {
+    if (go) return;
+    go = true;
     setTimeout(function () {
       if (stopped) return;
       pos = window.pageYOffset || 0;
       last = 0;
       requestAnimationFrame(step);
-    }, DELAY);
+    }, AFTER_NAMES);
+  }
+  function begin() {
+    if (started || reduce) return;
+    started = true;
+    var names = document.querySelectorAll('.hero h1 span');
+    var lastName = names[names.length - 1];
+    if (lastName) {
+      lastName.addEventListener('animationend', function (e) {
+        if (/write/i.test(e.animationName || '')) launch();
+      });
+    }
+    setTimeout(launch, DELAY);   // safety net, in case the animation never reports its end
   }
 
   var site = document.getElementById('site');
