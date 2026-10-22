@@ -2590,3 +2590,149 @@ html[lang="ar"] .hero.sunrise .date{
 .hero .date{
   display:none!important
 }
+
+
+/* =========================================================
+   ROUND 5: new fonts, golden-arch hero, dress code images
+   ========================================================= */
+
+/* English text: Tangerine (it has a small x-height, so it is scaled up to stay readable) */
+html:not([lang="ar"]) body,
+html:not([lang="ar"]) body *{
+  font-family:'Tangerine','Cormorant Garamond',serif!important;
+  font-size-adjust:.45
+}
+
+html:not([lang="ar"]) body input,
+html:not([lang="ar"]) body button,
+html:not([lang="ar"]) body textarea{
+  font-family:'Tangerine','Cormorant Garamond',serif!important
+}
+
+/* English names: Fleur De Leah */
+html:not([lang="ar"]) .hero h1,
+html:not([lang="ar"]) .hero h1 *,
+html:not([lang="ar"]) .intro-names,
+html:not([lang="ar"]) .intro-names *,
+html:not([lang="ar"]) .closing-names,
+html:not([lang="ar"]) .closing-names *{
+  font-family:'Fleur De Leah','Great Vibes',cursive!important;
+  font-size-adjust:.4
+}
+
+/* Arabic text and Arabic names: Reem Kufi Ink */
+html[lang="ar"] body,
+html[lang="ar"] body *{
+  font-family:'Reem Kufi Ink','Amiri',serif!important;
+  font-weight:400!important
+}
+
+html[lang="ar"] body .forever{
+  font-family:'Tangerine','Cormorant Garamond',serif!important;
+  font-size-adjust:.45
+}
+
+/* ---------- hero: golden archway photo ---------- */
+
+.hero-video{
+  object-position:50% 50%
+}
+
+.hero-overlay{
+  background:linear-gradient(to bottom,rgba(0,0,0,0) 55%,rgba(40,22,14,.28) 78%,rgba(40,22,14,.62) 100%)
+}
+
+.hero-content{
+  padding-bottom:46px
+}
+
+.hero h1{
+  flex-wrap:wrap;
+  font-size:clamp(54px,15vw,86px);
+  line-height:1.05
+}
+
+.hero h1 i{
+  font-size:.55em
+}
+
+/* ---------- other layout details for the new fonts ---------- */
+
+html:not([lang="ar"]) .intro .intro-names{
+  font-size:46px;
+  line-height:1.1
+}
+
+html:not([lang="ar"]) .closing-names{
+  font-size:clamp(70px,20vw,96px)
+}
+
+html:not([lang="ar"]) .forever{
+  font-size:36px;
+  font-weight:700
+}
+
+/* ---------- dress code: the two illustrated cards, stacked ---------- */
+
+.dress-art{
+  display:grid;
+  gap:18px;
+  max-width:360px;
+  margin:26px auto 0
+}
+
+.dress-art img{
+  display:block;
+  width:100%;
+  height:auto;
+  border-radius:18px;
+  box-shadow:0 10px 28px rgba(70,45,35,.18)
+}
+
+/* ---------- sleeping baby picture ---------- */
+
+.sleeping-child{
+  width:170px;
+  height:auto;
+  margin:6px auto 0
+}
+
+
+/* =========================================================
+   ROUND 6: Arabic text that must be white (Reem Kufi Ink is a colour font,
+   its own colours ignore CSS "color", so the plain Reem Kufi is used there)
+   ========================================================= */
+
+html[lang="ar"] body .photo-backdrop,
+html[lang="ar"] body .photo-backdrop *,
+html[lang="ar"] body .hero-content,
+html[lang="ar"] body .hero-content *,
+html[lang="ar"] body .rsvp-submit,
+html[lang="ar"] body .guest-opt span,
+html[lang="ar"] body .forever{
+  font-family:'Reem Kufi','Amiri',serif!important;
+  font-weight:600!important
+}
+
+/* the English phrase keeps its own font in English, and follows the Arabic font in Arabic */
+html[lang="ar"] body .forever{
+  font-size:34px;
+  font-style:normal;
+  letter-spacing:0
+}
+
+html[lang="ar"] body .rsvp-submit{
+  color:#fff!important
+}
+
+
+/* ---------- round 7: the site shows through as soon as the envelope starts opening ---------- */
+
+.envelope-overlay.revealing{
+  background:transparent
+}
+
+.envelope-overlay.revealing .stage{
+  background:transparent;
+  box-shadow:none
+}

@@ -34,9 +34,10 @@ document.body.style.overflow = 'hidden';
 
   /* ---------- renderer / camera ---------- */
   let renderer;
-  try { renderer = new THREE.WebGLRenderer({ antialias: true }); }
+  try { renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true }); }
   catch (e) { stage.innerHTML = '<p class="fallback">WebGL is not available on this device.</p>'; return; }
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  renderer.setClearColor(0x000000, 0);
   stage.appendChild(renderer.domElement);
 
   const scene = new THREE.Scene();
@@ -199,30 +200,29 @@ document.body.style.overflow = 'hidden';
     overlay.classList.add('is-hidden');
     replay.classList.add('visible');
     window.scrollTo({ top: 0, behavior: 'instant' });
-    sunrise();
   }
 
-  /* the sun rises over the lake, then the names are written one after the other */
+  /* once the hero picture is showing, the names are written one after the other */
   function sunrise() {
     const hero = document.querySelector('.hero');
     if (!hero) return;
-    const img = hero.querySelector('.hero-video');
-    const W = hero.clientWidth, H = hero.clientHeight;
-    const iw = (img && img.naturalWidth) || 941, ih = (img && img.naturalHeight) || 1672;
-    const sc = Math.max(W / iw, H / ih), rw = iw * sc, rh = ih * sc;
-    const oy = (H - rh) * 0.70, ox = (W - rw) / 2;
-    hero.style.setProperty('--hy', (oy + rh * 0.655) + 'px');
-    hero.style.setProperty('--hx', (ox + rw * 0.565) + 'px');
     hero.classList.remove('sunrise');
     void hero.offsetWidth;
     hero.classList.add('sunrise');
   }
 
+  let sunTimer = null;
+
+  /* the website is already there, behind the envelope, from the very first tap */
   function open() {
     if (start !== null) return;
     start = performance.now();
     stage.classList.add('open');
-    openTimer = setTimeout(showSite, 7700);
+    scene.background = null;
+    lining.visible = false;
+    overlay.classList.add('revealing');
+    sunTimer = setTimeout(sunrise, 3800);   // names start to be written while the flaps are opening
+    openTimer = setTimeout(showSite, 7900); // the envelope is gone
   }
 
   stage.addEventListener('click', open);
@@ -230,8 +230,12 @@ document.body.style.overflow = 'hidden';
 
   replay.addEventListener('click', () => {
     if (openTimer) clearTimeout(openTimer);
+    if (sunTimer) clearTimeout(sunTimer);
     start = null;
     stage.classList.remove('open');
+    scene.background = new THREE.Color(0xf8efdf);
+    lining.visible = true;
+    overlay.classList.remove('revealing');
     overlay.classList.remove('is-hidden');
     site.setAttribute('aria-hidden', 'true');
     const heroEl = document.querySelector('.hero');
