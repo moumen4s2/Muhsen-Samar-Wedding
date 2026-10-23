@@ -2796,3 +2796,14 @@ html:not([lang="ar"]) .intro .intro-families i{
   object-fit:contain;
   object-position:center
 }
+
+
+/* ---------- round 11: all English text is Cormorant Garamond ----------
+   (Arabic keeps its own fonts; the two couple-name signatures keep their script) */
+
+html:not([lang="ar"]):not([lang="ar"]):not([lang="ar"]):not([lang="ar"]):not([lang="ar"]) body *:not(svg):not(svg *):not(.intro-names):not(.intro-names *):not(.closing-names):not(.closing-names *),
+html:not([lang="ar"]):not([lang="ar"]):not([lang="ar"]):not([lang="ar"]):not([lang="ar"]) body *:not(.intro-names):not(.intro-names *):not(.closing-names):not(.closing-names *)::before,
+html:not([lang="ar"]):not([lang="ar"]):not([lang="ar"]):not([lang="ar"]):not([lang="ar"]) body *:not(.intro-names):not(.intro-names *):not(.closing-names):not(.closing-names *)::after{
+  font-family:'Cormorant Garamond','Times New Roman',serif!important;
+  font-size-adjust:none
+}
