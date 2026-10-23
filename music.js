@@ -105,5 +105,5 @@
 /* page decoration + automatic scroll (kept in their own files) */
 (function () {
   var l = document.createElement('link'); l.rel = 'stylesheet'; l.href = 'scenery.css?v=5'; document.head.appendChild(l);
-  var s = document.createElement('script'); s.src = 'scenery.js?v=4'; document.body.appendChild(s);
+  var s = document.createElement('script'); s.src = 'scenery.js?v=5'; document.body.appendChild(s);
 })();

@@ -90,14 +90,7 @@
   function begin() {
     if (started || reduce) return;
     started = true;
-    var names = document.querySelectorAll('.hero h1 span');
-    var lastName = names[names.length - 1];
-    if (lastName) {
-      lastName.addEventListener('animationend', function (e) {
-        if (/write/i.test(e.animationName || '')) launch();
-      });
-    }
-    setTimeout(launch, DELAY);   // safety net, in case the animation never reports its end
+    launch();   // the scroll starts AFTER_NAMES ms after the envelope has opened
   }
 
   var site = document.getElementById('site');
