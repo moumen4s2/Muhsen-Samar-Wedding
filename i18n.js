@@ -60,7 +60,6 @@
     'closing.n2': 'سَمَر',
     'dlg.close': 'إغلاق',
     'dlg.name': 'الاسم',
-    'dlg.attend': 'هل ستحضرون؟',
     'dlg.accept': 'أقبل بكل سرور',
     'dlg.decline': 'أعتذر مع الأسف',
     'dlg.guests': 'عدد الضيوف الحاضرين',
