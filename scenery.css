@@ -125,3 +125,11 @@
   color:#fff;
   text-shadow:0 1px 3px rgba(0,0,0,.65),0 2px 14px rgba(0,0,0,.55)
 }
+
+
+/* photos behind the schedule are shown whole, never cropped:
+   if a cell is a different shape than the photo, the paper colour fills the rest */
+.pb-collage img{
+  object-fit:contain;
+  object-position:center
+}

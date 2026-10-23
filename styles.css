@@ -2736,3 +2736,63 @@ html[lang="ar"] body .rsvp-submit{
   background:transparent;
   box-shadow:none
 }
+
+
+/* ---------- round 8: the English invitation message uses Cormorant Garamond ---------- */
+
+html:not([lang="ar"]) .intro-lead,
+html:not([lang="ar"]) .intro-lead *,
+html:not([lang="ar"]) .intro-honor,
+html:not([lang="ar"]) .intro-invite,
+html:not([lang="ar"]) .intro-closing,
+html:not([lang="ar"]) .intro-families,
+html:not([lang="ar"]) .intro-families *{
+  font-family:'Cormorant Garamond',serif!important;
+  font-size-adjust:none
+}
+
+html:not([lang="ar"]) .intro .intro-lead,
+html:not([lang="ar"]) .intro .intro-honor,
+html:not([lang="ar"]) .intro .intro-invite,
+html:not([lang="ar"]) .intro .intro-closing{
+  font-size:21px;
+  font-weight:500;
+  line-height:1.7
+}
+
+html:not([lang="ar"]) .intro .intro-families h3{
+  font-size:28px;
+  font-weight:600
+}
+
+html:not([lang="ar"]) .intro .intro-families i{
+  font-size:22px;
+  font-weight:500
+}
+
+
+/* ---------- round 9: on phones the envelope fills the whole screen ---------- */
+
+@media (max-aspect-ratio: 5/8){
+  .envelope-overlay .stage{
+    width:100%;
+    height:100%;
+    aspect-ratio:auto;
+    max-width:none;
+    border-radius:0;
+    box-shadow:none
+  }
+}
+
+
+/* ---------- round 10: closing photo is never cropped ---------- */
+
+/* closing photo: the whole picture, no cropping */
+.closing-photo{
+  width:100%;
+  height:auto;
+  min-height:0;
+  aspect-ratio:auto;
+  object-fit:contain;
+  object-position:center
+}

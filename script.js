@@ -44,11 +44,30 @@ document.body.style.overflow = 'hidden';
   scene.background = new THREE.Color(0xf8efdf);
 
   const D = 3.4;                                           // farther camera = calmer perspective
-  const fov = 2 * Math.atan((H / 2) / D) * 180 / Math.PI;  // the picture exactly fills the view
-  const camera = new THREE.PerspectiveCamera(fov, W / H, 0.1, 30);
+  const camera = new THREE.PerspectiveCamera(50, W / H, 0.1, 30);
   camera.position.set(0, 0, D);
+  const hint = stage.querySelector('.hint');
 
-  const resize = () => renderer.setSize(stage.clientWidth, stage.clientHeight, false);
+  /* the picture always COVERS the stage (like background-size:cover), so on any phone screen
+     the envelope fills it edge to edge; the picture's centre stays in the centre. */
+  function fitCamera() {
+    const a = stage.clientWidth / Math.max(1, stage.clientHeight);
+    const visH = Math.min(H, W / a);                // visible height, in world units
+    const visW = visH * a;
+    camera.aspect = a;
+    camera.fov = 2 * Math.atan((visH / 2) / D) * 180 / Math.PI;
+    camera.updateProjectionMatrix();
+    if (hint) {                                      // keep "Tap to open" just under the seal
+      const wx = (273 / IW - .5) * W, wy = (.5 - 575 / IH) * H;
+      hint.style.left = ((.5 + wx / visW) * 100) + '%';
+      hint.style.top  = ((.5 - wy / visH) * 100) + '%';
+    }
+  }
+
+  const resize = () => {
+    renderer.setSize(stage.clientWidth, stage.clientHeight, false);
+    fitCamera();
+  };
   new ResizeObserver(resize).observe(stage);
   resize();
 
