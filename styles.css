@@ -1528,6 +1528,10 @@ html:has(dialog[open]){
   color:var(--ink)
 }
 
+.intro-families .nobr{
+  white-space:nowrap
+}
+
 .intro-families i{
   font-style:italic;
   font-weight:400;

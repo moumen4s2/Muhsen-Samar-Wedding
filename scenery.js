@@ -53,7 +53,6 @@
 
   /* ---------- automatic scroll ---------- */
   var SPEED = 55;            // pixels per second
-  var DELAY = 12000;         // safety net only: normally the scroll waits for the names to be written
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   var started = false, stopped = false, pos = 0, last = 0;
   var dlg = document.getElementById('rsvpDialog');
@@ -74,28 +73,38 @@
     window.scrollTo({ top: pos, behavior: 'instant' });
     requestAnimationFrame(step);
   }
-  /* the scroll starts 2 seconds after the names have been written */
-  var AFTER_NAMES = 1000;
-  var go = false;
+  /* The scroll starts AFTER_OPEN ms after the envelope has opened and the hero picture is showing
+     (the moment script.js reveals the site). Replay resets everything, so it works again next time. */
+  var AFTER_OPEN = 1000;
+  var startTimer = null;
   function launch() {
-    if (go) return;
-    go = true;
-    setTimeout(function () {
+    if (startTimer) clearTimeout(startTimer);
+    startTimer = setTimeout(function () {
+      startTimer = null;
       if (stopped) return;
       pos = window.pageYOffset || 0;
       last = 0;
       requestAnimationFrame(step);
-    }, AFTER_NAMES);
+    }, AFTER_OPEN);
   }
   function begin() {
     if (started || reduce) return;
     started = true;
-    launch();   // the scroll starts AFTER_NAMES ms after the envelope has opened
+    stopped = false;
+    launch();
+  }
+  function reset() {           // the envelope is closed again (Replay)
+    if (startTimer) { clearTimeout(startTimer); startTimer = null; }
+    started = false;
+    stopped = true;            // cancels a scroll loop that may still be running
+    pos = 0;
+    last = 0;
   }
 
   var site = document.getElementById('site');
   var overlay = document.getElementById('envelope');
   function check() {
+    if (site && site.getAttribute('aria-hidden') === 'true' && overlay && !overlay.classList.contains('is-hidden')) { reset(); return; }
     if ((site && site.getAttribute('aria-hidden') === 'false') ||
         (overlay && overlay.classList.contains('is-hidden'))) begin();
   }
